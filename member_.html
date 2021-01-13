@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function show() {
+            var form = document.myform; // myform이라는 이름을 가지고 있는 것에 접근
+            var id = form["id"].value; // form 안에는 여러개의 이름이 배열 형태로 나열됨
+            var name = form["name"].value;
+            var gender = form["gender"].value;
+            var cell = form["phone1"].value + form["phone2"].value + form["phone3"].value;
+            var address = form["address"].value;
+            var hobby = "";
+            for (var i = 1; i <= 3; i++) {
+                if (form["hobby" + i].checked)
+                    hobby += form["hobby" + i].value + " ";
+            };
+            var str = name + "\n" + id + "\n" + gender + "\n";
+            str += cell + "\n" + address + "\n" + hobby;
+            alert(str);
+        };
+    </script>
+</head>
+
+<body>
+    <form method="POST" name="myform">
+        <table border="1" width="600px">
+            <tbody>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" maxlength="12" size="15" name="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" maxlength="12" size="15" name="id">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="password" maxlength="10" size="15" name="pw">
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" checked>남자
+                        <input type="radio" name="gender" value="female">여자
+                    </td>
+                </tr>
+                <tr>
+                    <td>취미</td>
+                    <td>
+                        <input type="checkbox" name="hobby1" value="soccer" checked>축구
+                        <input type="checkbox" name="hobby2" value="basketball">농구
+                        <input type="checkbox" name="hobby3" value="game">게임
+                    </td>
+                </tr>
+                <tr>
+                    <td>휴대전화</td>
+                    <td>
+                        <select name="phone1">
+                            <option value="phoneNum1" selected>010</option>
+                            <option value="phoneNum2">011</option>
+                            <option value="phoneNum3">016</option>
+                            <option value="phoneNum4">017</option>
+                        </select>
+                        <input type="text" size="4" maxlength="4" name="phone2">
+                        <input type="text" size="4" maxlength="4" name="phone3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td>
+                        <input type="text" size="45" name="address">
+                    </td>
+                </tr>
+                <tr>
+                    <td>자기소개</td>
+                    <td>
+                        <textarea name="introduce" cols="60" rows="5"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="회원가입" onclick="show();">
+        <input type="reset" value="다시시작">
+    </form>
+</body>
+
+</html>
